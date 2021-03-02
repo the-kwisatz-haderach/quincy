@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
-import { PageStory } from '../../lib/types'
+import { Stories } from '../../lib/types'
 import { DynamicBlokComponent } from '../DynamicBlokComponent'
 
 export interface Props {
-  story: PageStory
+  story: Stories
 }
 
 export default function Page({ story }: Props): ReactElement {
@@ -11,9 +11,11 @@ export default function Page({ story }: Props): ReactElement {
     <div>
       <h1>{story.name}</h1>
       <div>
-        {story.content.body.map((blok) => (
-          <DynamicBlokComponent blok={blok} />
-        ))}
+        {story.content.body
+          ? story.content.body.map((blok) => (
+              <DynamicBlokComponent key={blok._uid} blok={blok} />
+            ))
+          : null}
       </div>
     </div>
   )

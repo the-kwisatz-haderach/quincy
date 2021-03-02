@@ -1,19 +1,25 @@
 import { Head } from '../Head'
-import { Navigation, Props as NavigationProps } from '../Navigation'
-import Footer from '../../components/Footer'
-import storyblokInstance from '../../utils/storyblok-service'
+import { Navigation } from '../Navigation'
+import { Footer } from '../Footer'
 
-const menu = [{ title: 'home', link: '/home' }]
+const menu = [
+  { title: 'home', link: '/' },
+  { title: 'about', link: '/about' },
+]
 
-export type Props = {}
+export type Props = {
+  metaData: {
+    title: string
+    description: string
+  }
+}
 
-const Layout: React.FC<Props> = ({ children }) => (
+const Layout: React.FC<Props> = ({ children, metaData }) => (
   <div className="bg-gray-300">
-    <Head title="Hello" description="World" />
+    <Head title={metaData.title} description={metaData.description} />
     <Navigation menu={menu} />
     {children}
     <Footer />
-    {storyblokInstance.bridge()}
   </div>
 )
 

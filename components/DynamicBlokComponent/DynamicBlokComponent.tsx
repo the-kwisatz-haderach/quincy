@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react'
+import SbEditable from 'storyblok-react'
 import {
   GridBlok,
   StoryBlokComponentType,
@@ -33,5 +34,9 @@ export default function DynamicBlokComponent({ blok }: Props): ReactElement {
     return <div>There is no component defined for type: {blok.component}.</div>
   }
   const Component = components[blok.component]
-  return <Component {...blok} />
+  return (
+    <SbEditable content={blok}>
+      <Component {...blok} />
+    </SbEditable>
+  )
 }

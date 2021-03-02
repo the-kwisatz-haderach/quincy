@@ -3,13 +3,13 @@ import { Layout } from '../components/Layout'
 import { Page } from '../components/Page'
 import useStoryblok from '../hooks/useStoryblok'
 import Storyblok from '../lib/storyblok'
-import { HomeStory } from '../lib/types'
+import { AboutStory } from '../lib/types'
 
 type Props = {
-  story: HomeStory
+  story: AboutStory
 }
 
-export default function Home({ story }: Props): React.ReactElement {
+export default function About({ story }: Props): React.ReactElement {
   const storyContent = useStoryblok(story)
   return (
     <Layout metaData={{ title: story.name, description: '' }}>
@@ -18,20 +18,19 @@ export default function Home({ story }: Props): React.ReactElement {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const res = await Storyblok.get(
-    `${process.env.STORYBLOK_ENDPOINT_ROOT}/stories/home`,
+    `${process.env.STORYBLOK_ENDPOINT_ROOT}/stories/about`,
     {
       version: 'draft',
       cv: Date.now(),
     }
   )
-  const story: HomeStory = res.data.story
+  const story: AboutStory = res.data.story
 
   return {
     props: {
       story,
     },
-    revalidate: 20,
   }
 }
