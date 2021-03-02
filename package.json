@@ -8,8 +8,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "next": "10.0.7",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "storyblok-js-client": "^3.3.1",
+    "storyblok-react": "^0.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.31",
+    "@types/react": "^17.0.2",
+    "postcss": "^8.2.6",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^2.0.3",
+    "typescript": "^4.2.2"
   }
 }
