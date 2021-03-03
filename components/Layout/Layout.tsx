@@ -45,9 +45,7 @@ const Layout: React.FC<Props> = ({ children, metaData }) => (
     <Head title={metaData.title} description={metaData.description} />
     <Navigation menu={menu} />
     <Breadcrumbs />
-    <div className="container max-w-screen-xl px-5 lg:px-auto mx-auto my-10">
-      {children}
-    </div>
+    <div>{children}</div>
     <Footer socialChannels={socialChannels} />
   </div>
 )

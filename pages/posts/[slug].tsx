@@ -19,18 +19,20 @@ export default function PostComponent({ story }: Props): ReactElement {
         description: '',
       }}
     >
-      <div className="relative w-full h-80">
-        <Image
-          src={`http:${story.content.image}`}
-          objectFit="cover"
-          layout="fill"
-        />
+      <div className="contained">
+        <div className="relative w-full h-80">
+          <Image
+            src={`http:${story.content.image}`}
+            objectFit="cover"
+            layout="fill"
+          />
+        </div>
+        <h1 className="my-8">{story.content.title}</h1>
+        <p className="intro">{story.content.intro}</p>
+        <RichText className="text-normal leading-7">
+          {story.content.long_text}
+        </RichText>
       </div>
-      <h1 className="my-8">{story.content.title}</h1>
-      <p className="intro">{story.content.intro}</p>
-      <RichText className="text-normal leading-7">
-        {story.content.long_text}
-      </RichText>
     </Layout>
   )
 }

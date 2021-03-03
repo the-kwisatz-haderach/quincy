@@ -15,7 +15,11 @@ export type StoryBlokLink = {
 
 export type StoryType = 'page' | 'post'
 
-export type StoryBlokComponentType = 'teaser' | 'grid' | 'full-width-content'
+export type StoryBlokComponentType =
+  | 'teaser'
+  | 'grid'
+  | 'full-width-content'
+  | 'headline'
 
 // Stories
 export type Story<Fields extends Record<string, unknown> = {}> = StoryData<
@@ -41,6 +45,7 @@ export type FullWidthContentBlok = StoryContent<
   'full-width-content',
   { body: Richtext }
 >
+export type HeadlineBlok = StoryContent<'headline', Headline>
 
 export type Post = {
   title: string
@@ -49,4 +54,20 @@ export type Post = {
   long_text: Richtext
 }
 
-export type StoryBlokComponent = TeaserBlok | GridBlok | FullWidthContentBlok
+export type Color =
+  | 'primary-dark'
+  | 'primary-light'
+  | 'secondary-dark'
+  | 'secondary-light'
+
+export type Headline = {
+  title: string
+  description: string
+  color: Color
+}
+
+export type StoryBlokComponent =
+  | TeaserBlok
+  | GridBlok
+  | FullWidthContentBlok
+  | HeadlineBlok

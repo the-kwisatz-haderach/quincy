@@ -24,6 +24,10 @@
     @apply hover:text-green-300 transition-colors;
   }
 
+  .contained {
+    @apply container max-w-screen-xl mx-auto px-5;
+  }
+
   .intro {
     @apply text-xl font-semibold my-6 block;
   }

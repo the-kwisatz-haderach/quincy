@@ -7,6 +7,7 @@ import {
 } from '../../lib/types'
 import { FullWidthContent } from '../FullWidthContent'
 import { Grid } from '../Grid'
+import { Headline } from '../Headline'
 
 export interface Props {
   blok: StoryBlokComponent
@@ -20,6 +21,7 @@ const components: {
   teaser: Teaser,
   grid: Grid,
   'full-width-content': FullWidthContent,
+  headline: Headline,
 }
 
 export default function DynamicBlokComponent({ blok }: Props): ReactElement {

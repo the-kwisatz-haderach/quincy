@@ -14,3 +14,7 @@
 .image-container {
   @apply relative h-48 w-full cursor-pointer overflow-hidden;
 }
+
+.gradient-fade-out {
+  background-image: linear-gradient(to right, transparent, white 25%);
+}

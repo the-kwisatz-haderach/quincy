@@ -9,6 +9,7 @@ export interface Props {
   description: string
   url: string
   imageUrl: string
+  tags: string[]
 }
 
 export default function Card({
@@ -16,6 +17,7 @@ export default function Card({
   description,
   url,
   imageUrl,
+  tags,
 }: Props): ReactElement {
   const shortenedDescription = description.substr(0, 150)
   return (
@@ -34,10 +36,20 @@ export default function Card({
             {shortenedDescription.length >= 150 ? '...' : ''}
           </p>
         </div>
-        <div>
-          <ArrowLink href={url} className="place-self-end	text-green-500">
-            Läs mer
-          </ArrowLink>
+        <div className="relative flex flex-row justify-between items-center w-full overflow-hidden">
+          <div className="absolute left-0 top-0 overflow-hidden space-x-1 flex flex-row text-gray-300 text-regular">
+            {tags.map((tag) => (
+              <p key={tag}>#{tag}</p>
+            ))}
+          </div>
+          <div className={`w-full h-full relative`}>
+            <ArrowLink
+              href={url}
+              className={`float-right pl-10 text-green-500 ${styles['gradient-fade-out']}`}
+            >
+              Läs mer
+            </ArrowLink>
+          </div>
         </div>
       </div>
     </div>

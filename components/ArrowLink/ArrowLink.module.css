@@ -3,7 +3,7 @@
 }
 
 .link-label p:first-child {
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out 0.1s;
 }
 
 .link-label:hover p:first-child {
@@ -17,10 +17,10 @@
 
 @keyframes phaseOut {
   from {
-    transform: translateX(0);
+    transform: translateX(0%);
   }
   50% {
-    transform: translateX(40%);
+    transform: translateX(-40%);
   }
   to {
     transform: translateX(0);

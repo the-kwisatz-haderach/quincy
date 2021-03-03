@@ -26,6 +26,7 @@ export default function PostsIndex({ posts }: Props): ReactElement {
             description={post.content.intro}
             url={post.full_slug}
             imageUrl={`http:${post.content.image}`}
+            tags={post.tag_list}
           />
         ))}
       </Grid>

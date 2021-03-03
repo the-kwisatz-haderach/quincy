@@ -18,7 +18,7 @@ export default function Home({ story, posts }: Props): React.ReactElement {
   return (
     <Layout metaData={{ title: story.name, description: '' }}>
       <Page story={storyContent} />
-      <div className="flex font-semibold flex-row py-5 justify-between items-center">
+      <div className="contained flex font-semibold flex-row py-5 justify-between items-center">
         <h3>Latest posts</h3>
         <ArrowLink className="uppercase" href="posts">
           View all
@@ -32,6 +32,7 @@ export default function Home({ story, posts }: Props): React.ReactElement {
             description={post.content.intro}
             imageUrl={`http:${post.content.image}`}
             url={post.full_slug}
+            tags={post.tag_list}
           />
         ))}
       </Grid>
