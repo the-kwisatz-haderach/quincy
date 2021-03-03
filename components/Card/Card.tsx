@@ -27,7 +27,7 @@ export default function Card({
         </p>
       </div>
       <Link href={url}>
-        <a className="float-right transition-colors font-medium text-green-500 hover:text-green-300">
+        <a className="float-right font-medium text-green-500 hover:text-green-300">
           Läs mer <FontAwesomeIcon icon={faChevronRight} />
         </a>
       </Link>

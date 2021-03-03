@@ -1,3 +1,17 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer base {
+  h1 {
+    @apply text-8xl my-8;
+  }
+
+  a {
+    @apply hover:text-green-300 transition-colors;
+  }
+
+  .intro {
+    @apply text-xl font-semibold my-6 block;
+  }
+}

@@ -19,7 +19,7 @@ export default function Breadcrumbs(): ReactElement | null {
         <a className="hover:text-green-300 transition-colors">Home</a>
       </Link>
       {crumbs.map((slug) => (
-        <div className={`flex space-x-2 ${styles.crumbs}`}>
+        <div key={slug} className={`flex space-x-2 ${styles.crumbs}`}>
           <p className="pointer-events-none">/</p>
           <Link href={'/' + slug}>
             <a className="hover:text-green-300 transition-colors">

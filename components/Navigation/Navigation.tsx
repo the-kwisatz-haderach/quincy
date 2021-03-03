@@ -27,7 +27,7 @@ const Navigation: React.FC<Props> = ({ menu = [] }) => {
       </div>
       <nav className="flex flex-row space-x-10 capitalize">
         {menuLinks.map((item) => (
-          <Link href={item.link}>
+          <Link href={item.link} key={item.title}>
             <a
               className={
                 isSelected(item.link)

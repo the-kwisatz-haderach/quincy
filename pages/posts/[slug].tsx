@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React, { ReactElement } from 'react'
 import { StoryblokResult } from 'storyblok-js-client'
 import { Layout } from '../../components/Layout'
+import { RichText } from '../../components/RichText'
 import Storyblok from '../../lib/storyblok'
 import { Post, Story, StoryBlokLink } from '../../lib/types'
 
@@ -25,9 +26,11 @@ export default function PostComponent({ story }: Props): ReactElement {
           layout="fill"
         />
       </div>
-      <h1 className="text-8xl my-8">{story.content.title}</h1>
-      <p className="text-xl font-semibold my-6">{story.content.intro}</p>
-      <p className="text-normal leading-7">{story.content.intro}</p>
+      <h1 className="my-8">{story.content.title}</h1>
+      <p className="intro">{story.content.intro}</p>
+      <RichText className="text-normal leading-7">
+        {story.content.long_text}
+      </RichText>
     </Layout>
   )
 }

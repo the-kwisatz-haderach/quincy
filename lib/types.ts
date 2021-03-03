@@ -1,4 +1,4 @@
-import { StoryblokComponent, StoryData } from 'storyblok-js-client'
+import { Richtext, StoryblokComponent, StoryData } from 'storyblok-js-client'
 
 export type StoryBlokLink = {
   id: number
@@ -15,7 +15,7 @@ export type StoryBlokLink = {
 
 export type StoryType = 'page' | 'post'
 
-export type StoryBlokComponentType = 'teaser' | 'grid'
+export type StoryBlokComponentType = 'teaser' | 'grid' | 'full-width-content'
 
 // Stories
 export type Story<Fields extends Record<string, unknown> = {}> = StoryData<
@@ -37,13 +37,16 @@ export type StoryContent<
 
 export type TeaserBlok = StoryContent<'teaser', { headline: string }>
 export type GridBlok = StoryContent<'grid', { columns: { name: string }[] }>
+export type FullWidthContentBlok = StoryContent<
+  'full-width-content',
+  { body: Richtext }
+>
 
 export type Post = {
   title: string
   image: string
   intro: string
-  longText: string
-  author: string
+  long_text: Richtext
 }
 
-export type StoryBlokComponent = TeaserBlok | GridBlok
+export type StoryBlokComponent = TeaserBlok | GridBlok | FullWidthContentBlok

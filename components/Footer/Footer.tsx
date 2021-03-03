@@ -20,6 +20,7 @@ const Footer: React.FC<Props> = ({ socialChannels }) => {
       <div className="flex flex-row space-x-3 text-3xl p-5">
         {socialChannels.map((channel) => (
           <a
+            key={channel.title}
             className="hover:text-green-300"
             href={channel.link}
             title={channel.title}

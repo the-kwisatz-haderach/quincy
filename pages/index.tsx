@@ -1,13 +1,9 @@
 import { GetStaticProps } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
 import { Layout } from '../components/Layout'
 import { Page } from '../components/Page'
 import useStoryblok from '../hooks/useStoryblok'
 import Storyblok from '../lib/storyblok'
 import { HomeStory, PostStory } from '../lib/types'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Card } from '../components/Card'
 import { Grid } from '../components/Grid'
 
