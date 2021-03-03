@@ -6,6 +6,7 @@ import Storyblok from '../lib/storyblok'
 import { HomeStory, PostStory } from '../lib/types'
 import { Card } from '../components/Card'
 import { Grid } from '../components/Grid'
+import { ArrowLink } from '../components/ArrowLink'
 
 type Props = {
   story: HomeStory
@@ -17,9 +18,16 @@ export default function Home({ story, posts }: Props): React.ReactElement {
   return (
     <Layout metaData={{ title: story.name, description: '' }}>
       <Page story={storyContent} />
+      <div className="flex font-semibold flex-row py-5 justify-between items-center">
+        <h3>Latest posts</h3>
+        <ArrowLink className="uppercase" href="posts">
+          View all
+        </ArrowLink>
+      </div>
       <Grid>
         {posts.map((post) => (
           <Card
+            key={post.id}
             title={post.content.title}
             description={post.content.intro}
             imageUrl={`http:${post.content.image}`}

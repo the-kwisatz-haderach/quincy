@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import styles from './Card.module.css'
+import { ArrowLink } from '../ArrowLink'
 
 export interface Props {
   title: string
@@ -17,20 +17,25 @@ export default function Card({
   url,
   imageUrl,
 }: Props): ReactElement {
+  const shortenedDescription = description.substr(0, 150)
   return (
-    <div className="w-full shadow-lg p-5">
-      <Image src={imageUrl} width={400} height={240} />
+    <div className={styles.card}>
+      <Link href={url}>
+        <div className={styles['image-container']}>
+          <div className="absolute z-50 w-full h-full bg-gradient-to-bl from-transparent to-green-500" />
+          <Image src={imageUrl} layout="fill" />
+        </div>
+      </Link>
       <div>
         <h5 className="font-semibold my-2 text-xl">{title}</h5>
         <p className="leading-normal mb-3 overflow-hidden overflow-ellipsis max-h-18">
-          {description.substr(0, 150)}...
+          {shortenedDescription}
+          {shortenedDescription.length >= 150 ? '...' : ''}
         </p>
       </div>
-      <Link href={url}>
-        <a className="float-right font-medium text-green-500 hover:text-green-300">
-          Läs mer <FontAwesomeIcon icon={faChevronRight} />
-        </a>
-      </Link>
+      <ArrowLink href={url} className="float-right font-medium text-green-500">
+        Läs mer
+      </ArrowLink>
     </div>
   )
 }

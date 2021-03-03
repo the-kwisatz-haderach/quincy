@@ -21,6 +21,7 @@ export default function PostsIndex({ posts }: Props): ReactElement {
       <Grid>
         {posts.map((post) => (
           <Card
+            key={post.id}
             title={post.content.title}
             description={post.content.intro}
             url={post.full_slug}
