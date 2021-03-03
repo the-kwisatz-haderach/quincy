@@ -1,0 +1,21 @@
+.link-label:hover {
+  animation: bounce 0.3s ease-in-out forwards;
+}
+
+@keyframes bounce {
+  from {
+    transform: rotateZ(0deg);
+  }
+  5% {
+    transform: rotateZ(-2deg);
+  }
+  50% {
+    transform: rotateZ(6deg);
+  }
+  95% {
+    transform: rotateZ(-2deg);
+  }
+  to {
+    transform: rotateZ(0deg);
+  }
+}
