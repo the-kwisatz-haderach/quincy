@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
+import Image from 'next/image'
 import React, { ReactElement } from 'react'
 import { StoryblokResult } from 'storyblok-js-client'
 import { Layout } from '../../components/Layout'
@@ -17,7 +18,16 @@ export default function PostComponent({ story }: Props): ReactElement {
         description: '',
       }}
     >
-      {story.content.title}
+      <div className="relative w-full h-80">
+        <Image
+          src={`http:${story.content.image}`}
+          objectFit="cover"
+          layout="fill"
+        />
+      </div>
+      <h1 className="text-8xl my-8">{story.content.title}</h1>
+      <p className="text-xl font-semibold my-6">{story.content.intro}</p>
+      <p className="text-normal leading-7">{story.content.intro}</p>
     </Layout>
   )
 }
