@@ -11,11 +11,9 @@ const ArrowLink: React.FC<LinkProps & ComponentProps<'a'>> = ({
 }): ReactElement => {
   return (
     <Link href={href}>
-      <a
-        {...props}
-        className={`tracking-wide ${props.className} ${styles['link-label']}`}
-      >
-        {children} <FontAwesomeIcon icon={faChevronRight} />
+      <a {...props} className={`${props.className} ${styles['link-label']}`}>
+        <p className="relative">{children}</p>{' '}
+        <FontAwesomeIcon icon={faChevronRight} />
       </a>
     </Link>
   )

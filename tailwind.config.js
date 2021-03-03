@@ -188,6 +188,7 @@ module.exports = {
         '"Noto Color Emoji"',
       ],
       serif: [
+        'Lobster',
         'Merriweather',
         'ui-serif',
         'Georgia',

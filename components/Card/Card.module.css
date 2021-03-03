@@ -1,5 +1,5 @@
 .card {
-  @apply w-full hover:shadow-xl shadow-lg p-5 transition-all border-2 border-solid border-gray-100;
+  @apply flex flex-col w-full hover:shadow-xl shadow-lg p-5 transition-all border-2 border-solid border-gray-100;
 }
 
 .card div:first-child div:first-child {

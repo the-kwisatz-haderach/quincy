@@ -21,7 +21,7 @@ const Navigation: React.FC<Props> = ({ menu = [] }) => {
     router.asPath.split('/')[1] === path.replace('/', '')
 
   return (
-    <header className="px-10 py-5 flex flex-row justify-between shadow-md">
+    <header className="sticky top-0 z-50 bg-white px-10 py-5 flex flex-row justify-between shadow-md">
       <div>
         <Link href={home.link}>LOGO</Link>
       </div>

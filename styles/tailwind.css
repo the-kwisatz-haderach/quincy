@@ -3,6 +3,15 @@
 @import 'tailwindcss/utilities';
 
 @layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+
   h1 {
     @apply text-8xl my-8;
   }
@@ -17,5 +26,43 @@
 
   .intro {
     @apply text-xl font-semibold my-6 block;
+  }
+
+  .animate-bouncer:hover {
+    animation: bounce 0.3s ease-in-out forwards infinite;
+  }
+
+  .animate-enlarge:hover {
+    animation: enlarge 0.6s ease-in-out forwards infinite;
+  }
+
+  @keyframes bounce {
+    from {
+      transform: rotateZ(0deg);
+    }
+    5% {
+      transform: rotateZ(-2deg);
+    }
+    50% {
+      transform: rotateZ(6deg);
+    }
+    95% {
+      transform: rotateZ(-2deg);
+    }
+    to {
+      transform: rotateZ(0deg);
+    }
+  }
+
+  @keyframes enlarge {
+    from {
+      transform: scale(1) rotate(-2deg);
+    }
+    50% {
+      transform: scale(1.1) rotate(3deg);
+    }
+    to {
+      transform: scale(1) rotate(-2deg);
+    }
   }
 }

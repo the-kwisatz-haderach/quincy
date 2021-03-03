@@ -25,7 +25,7 @@ const Footer: React.FC<Props> = ({ socialChannels }) => {
             href={channel.link}
             title={channel.title}
           >
-            <FontAwesomeIcon icon={channel.icon} />
+            <FontAwesomeIcon className="animate-enlarge" icon={channel.icon} />
           </a>
         ))}
       </div>

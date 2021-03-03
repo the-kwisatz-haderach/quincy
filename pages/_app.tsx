@@ -1,5 +1,6 @@
 import { ComponentType } from 'react'
 import '../styles/globals.css'
+import '../styles/fonts.css'
 import '../styles/tailwind.css'
 
 type Props = {
