@@ -9,14 +9,11 @@ export interface Props {
 export default function Page({ story }: Props): ReactElement {
   return (
     <div>
-      <h1>{story.name}</h1>
-      <div>
-        {story.content.body
-          ? story.content.body.map((blok) => (
-              <DynamicBlokComponent key={blok._uid} blok={blok} />
-            ))
-          : null}
-      </div>
+      {story.content.body
+        ? story.content.body.map((blok) => (
+            <DynamicBlokComponent key={blok._uid} blok={blok} />
+          ))
+        : null}
     </div>
   )
 }
