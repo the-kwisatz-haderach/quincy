@@ -13,7 +13,7 @@ export type Props = {
 
 const Footer: React.FC<Props> = ({ socialChannels }) => {
   return (
-    <footer className="flex text-white flex-row flex-grow items-end bg-green-600 justify-between border-t-3 border-solid border-green-900 border-opacity-20 mt-8">
+    <footer className="flex text-white flex-row flex-grow items-end bg-green-600 justify-between border-t-3 border-solid border-green-900 border-opacity-20">
       <div className="p-5">
         <FontAwesomeIcon icon={faCopyright} /> {new Date().getFullYear()} Quincy
       </div>

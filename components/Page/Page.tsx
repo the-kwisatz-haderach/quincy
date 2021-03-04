@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
-import { Stories } from '../../lib/types'
+import { PageStory } from '../../lib/storyTypes'
 import { DynamicBlokComponent } from '../DynamicBlokComponent'
 
 export interface Props {
-  story: Stories
+  story: PageStory
 }
 
 export default function Page({ story }: Props): ReactElement {
