@@ -42,8 +42,9 @@ export default function Home({ story, posts }: Props): React.ReactElement {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const res = await Storyblok.getStory('home', {
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
+  const loc = locale === 'en' ? '' : `${locale}/`
+  const res = await Storyblok.getStory(`${loc}home`, {
     version: 'draft',
     cv: Date.now(),
   })

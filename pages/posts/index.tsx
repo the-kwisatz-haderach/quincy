@@ -81,10 +81,10 @@ export default function PostsIndex({ posts }: Props): ReactElement {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const { data } = await Storyblok.getStories({
     sort_by: 'created_at:desc',
-    starts_with: 'posts',
+    starts_with: `${context.locale}/posts`,
     version: 'draft',
   })
 

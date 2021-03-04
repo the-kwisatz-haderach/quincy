@@ -39,6 +39,15 @@ const Navigation: React.FC<Props> = ({ menu = [] }) => {
             </a>
           </Link>
         ))}
+        <div className="flex flex-row space-x-1">
+          <Link href={router.asPath} locale="sv">
+            <a>SV</a>
+          </Link>
+          <span>/</span>
+          <Link href={router.asPath} locale="en">
+            <a>EN</a>
+          </Link>
+        </div>
       </nav>
     </header>
   )

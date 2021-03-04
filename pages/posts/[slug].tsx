@@ -5,10 +5,11 @@ import { StoryblokResult } from 'storyblok-js-client'
 import { Layout } from '../../components/Layout'
 import { RichText } from '../../components/RichText'
 import Storyblok from '../../lib/storyblok'
-import { Post, Story, StoryBlokLink } from '../../lib/types'
+import { PostStory } from '../../lib/storyTypes'
+import { StoryBlokLink } from '../../lib/types'
 
 interface Props {
-  story: Story<Post>
+  story: PostStory
 }
 
 export default function PostComponent({ story }: Props): ReactElement {
@@ -38,14 +39,17 @@ export default function PostComponent({ story }: Props): ReactElement {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res: StoryblokResult = await Storyblok.get('cdn/links/', {
+  const { data }: StoryblokResult = await Storyblok.get('cdn/links/', {
     version: 'draft',
   })
 
-  const paths = Object.values<StoryBlokLink>(res.data.links).flatMap((link) => {
+  const paths = Object.values<StoryBlokLink>(data.links).flatMap((link) => {
     if (link.is_folder) return []
     if (link.slug === 'home' || link.real_path === '/') return []
-    return { params: { slug: link.slug.split('/').slice(-1)[0] } }
+    return link.alternates.map((altLink) => ({
+      params: { slug: altLink.path.split('/').slice(-1)[0] },
+      locale: altLink.lang,
+    }))
   })
 
   return {
@@ -56,13 +60,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
   params,
+  locale,
 }) => {
-  const { data } = await Storyblok.get(`cdn/stories/posts/${params?.slug}`, {
-    version: 'draft',
-  })
+  const { data } = await Storyblok.getStory(
+    `${locale}/posts/${params?.slug}` || '',
+    {
+      version: 'draft',
+      cv: Date.now(),
+    }
+  )
+
   return {
     props: {
-      story: data.story,
+      story: data.story as PostStory,
     },
   }
 }

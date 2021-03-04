@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import React, { ReactElement } from 'react'
 import { useRouter } from 'next/router'
 import { Layout } from '../components/Layout'
@@ -15,7 +14,7 @@ export default function PageNotFound({}: Props): ReactElement {
         description: '',
       }}
     >
-      <div className="flex flex-col items-center justify-center">
+      <div className="contained flex flex-col items-center justify-center">
         <h1 className="text-8xl my-5">404</h1>
         <p className="text-xl">Are you lost?</p>
         <button

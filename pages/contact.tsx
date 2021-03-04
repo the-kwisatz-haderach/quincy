@@ -18,14 +18,12 @@ export default function Contact({ story }: Props): React.ReactElement {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const res = await Storyblok.get(
-    `${process.env.STORYBLOK_ENDPOINT_ROOT}/stories/contact`,
-    {
-      version: 'draft',
-      cv: Date.now(),
-    }
-  )
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
+  const loc = locale === 'en' ? '' : `${locale}/`
+  const res = await Storyblok.getStory(`${loc}/contact`, {
+    version: 'draft',
+    cv: Date.now(),
+  })
   const story: PageStory = res.data.story
 
   return {

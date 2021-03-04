@@ -29,7 +29,7 @@ export default function Card({
         </div>
       </Link>
       <div className="flex flex-col flex-grow items-end justify-between">
-        <div>
+        <div className="w-full h-full">
           <h5 className="font-semibold my-2 text-xl">{title}</h5>
           <p className="leading-normal mb-3 overflow-hidden overflow-ellipsis max-h-18">
             {shortenedDescription}

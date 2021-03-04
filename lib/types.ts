@@ -12,6 +12,7 @@ export type StoryBlokLink = {
   uuid: string
   is_startpage: boolean
   real_path: string
+  alternates: { path: string; name: null | string; lang: string }[]
 }
 
 export type Color =
