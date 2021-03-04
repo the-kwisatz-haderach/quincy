@@ -45,7 +45,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const paths = Object.values<StoryBlokLink>(data.links).flatMap((link) => {
     if (link.is_folder) return []
-    if (link.slug === 'home' || link.real_path === '/') return []
+    if (
+      link.slug === 'home' ||
+      link.slug === 'about' ||
+      link.slug === 'contact' ||
+      link.real_path === '/'
+    )
+      return []
     return link.alternates.map((altLink) => ({
       params: { slug: altLink.path.split('/').slice(-1)[0] },
       locale: altLink.lang,
