@@ -44,24 +44,26 @@ export default function PostsIndex({ posts }: Props): ReactElement {
         description: '',
       }}
     >
-      <div className="w-full p-5 bg-green-400 flex flex-row items-center space-x-5">
-        <div className="flex-grow">
-          <p className="font-normal mb-2">Sök</p>
-          <SearchBar onTypeQuery={handleSearchQuery} />
+      <div className="w-full p-5 bg-green-400 ">
+        <div className="contained space-x-5 my-0 flex flex-row items-center">
+          <div className="flex-grow">
+            <p className="font-normal mb-2">Sök</p>
+            <SearchBar onTypeQuery={handleSearchQuery} />
+          </div>
+          <FilterMenu
+            title="Taggar"
+            filters={posts
+              .flatMap((post) => post.tag_list)
+              .map((tag) => ({
+                value: tag,
+                label: `#${tag}`,
+                isSelected: selectedTags.has(tag),
+              }))}
+            onSelectItem={toggleTag}
+          />
         </div>
-        <FilterMenu
-          title="Taggar"
-          filters={posts
-            .flatMap((post) => post.tag_list)
-            .map((tag) => ({
-              value: tag,
-              label: `#${tag}`,
-              isSelected: selectedTags.has(tag),
-            }))}
-          onSelectItem={toggleTag}
-        />
       </div>
-      <div className="my-10">
+      <div className="contained">
         <Grid>
           {filterByTags(selectedTags)(currentPosts).map((post) => (
             <Card

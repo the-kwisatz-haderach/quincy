@@ -6,9 +6,10 @@ import {
   TeaserBlok,
 } from '../../lib/blokTypes'
 import { FullWidthContent } from '../FullWidthContent'
-import { Grid } from '../Grid'
+import { GridBlok } from '../GridBlok'
 import { Headline } from '../Headline'
 import { HeroImage } from '../HeroImage'
+import { RichTextBlok } from '../RichTextBlok'
 
 export interface Props {
   blok: StoryBlokComponent
@@ -20,10 +21,11 @@ const components: {
   [key in StoryBlokComponentType]: React.FC<any>
 } = {
   teaser: Teaser,
-  grid: Grid,
+  grid: GridBlok,
   'full-width-content': FullWidthContent,
   headline: Headline,
   'hero-image': HeroImage,
+  'rich-text': RichTextBlok,
 }
 
 export default function DynamicBlokComponent({ blok }: Props): ReactElement {

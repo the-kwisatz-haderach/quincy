@@ -1,4 +1,5 @@
 import { Richtext } from 'storyblok-js-client'
+import { StoryBlokComponent } from './blokTypes'
 
 export type StoryBlokLink = {
   id: number
@@ -32,9 +33,19 @@ export type Headline = {
   color: Color
 }
 
+export type RichTextBlok = {
+  text: Richtext
+}
+
 export type HeroImage = {
   title: string
   subtitle: string
   description: string
   image: string
+}
+
+export type Grid = {
+  columns: StoryBlokComponent[]
+  col_count: number
+  grid_gap: number
 }

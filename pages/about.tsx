@@ -3,10 +3,10 @@ import { Layout } from '../components/Layout'
 import { Page } from '../components/Page'
 import useStoryblok from '../hooks/useStoryblok'
 import Storyblok from '../lib/storyblok'
-import { AboutStory } from '../lib/types'
+import { PageStory } from '../lib/storyTypes'
 
 type Props = {
-  story: AboutStory
+  story: PageStory
 }
 
 export default function About({ story }: Props): React.ReactElement {
@@ -18,7 +18,7 @@ export default function About({ story }: Props): React.ReactElement {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const res = await Storyblok.get(
     `${process.env.STORYBLOK_ENDPOINT_ROOT}/stories/about`,
     {
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
       cv: Date.now(),
     }
   )
-  const story: AboutStory = res.data.story
+  const story: PageStory = res.data.story
 
   return {
     props: {

@@ -29,7 +29,7 @@
   }
 
   .contained {
-    @apply container max-w-screen-xl mx-auto px-5;
+    @apply container max-w-screen-xl mx-auto px-5 my-20;
   }
 
   .intro {

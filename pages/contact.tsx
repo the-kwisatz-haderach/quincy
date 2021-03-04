@@ -3,10 +3,10 @@ import { Layout } from '../components/Layout'
 import { Page } from '../components/Page'
 import useStoryblok from '../hooks/useStoryblok'
 import Storyblok from '../lib/storyblok'
-import { ContactStory } from '../lib/types'
+import { PageStory } from '../lib/storyTypes'
 
 type Props = {
-  story: ContactStory
+  story: PageStory
 }
 
 export default function Contact({ story }: Props): React.ReactElement {
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       cv: Date.now(),
     }
   )
-  const story: ContactStory = res.data.story
+  const story: PageStory = res.data.story
 
   return {
     props: {

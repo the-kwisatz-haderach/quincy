@@ -1,5 +1,5 @@
 import { Richtext, StoryblokComponent } from 'storyblok-js-client'
-import { Headline, HeroImage } from './types'
+import { Grid, Headline, HeroImage, RichTextBlok } from './types'
 
 export type StoryBlokComponentType =
   | string
@@ -8,6 +8,7 @@ export type StoryBlokComponentType =
   | 'full-width-content'
   | 'headline'
   | 'hero-image'
+  | 'rich-text'
 
 export type StoryContent<
   Type extends StoryBlokComponentType,
@@ -15,7 +16,7 @@ export type StoryContent<
 > = StoryblokComponent<Type> & Fields
 
 export type TeaserBlok = StoryContent<'teaser', { headline: string }>
-export type GridBlok = StoryContent<'grid', { columns: { name: string }[] }>
+export type GridBlok = StoryContent<'grid', Grid>
 export type FullWidthContentBlok = StoryContent<
   'full-width-content',
   { body: Richtext }
@@ -24,7 +25,7 @@ export type HeadlineBlok = StoryContent<'headline', Headline>
 export type HeroImageBlok = StoryContent<'hero-image', HeroImage>
 
 export type StoryBlokComponent =
-  | TeaserBlok
+  | StoryContent<'rich-text', RichTextBlok>
   | GridBlok
   | FullWidthContentBlok
   | HeadlineBlok
