@@ -31,3 +31,10 @@ export type Headline = {
   description: string
   color: Color
 }
+
+export type HeroImage = {
+  title: string
+  subtitle: string
+  description: string
+  image: string
+}

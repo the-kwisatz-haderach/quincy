@@ -1,13 +1,14 @@
 import React, { ReactElement } from 'react'
 import SbEditable from 'storyblok-react'
 import {
-  StoryBlokComponentType,
   StoryBlokComponent,
+  StoryBlokComponentType,
   TeaserBlok,
-} from '../../lib/types'
+} from '../../lib/blokTypes'
 import { FullWidthContent } from '../FullWidthContent'
 import { Grid } from '../Grid'
 import { Headline } from '../Headline'
+import { HeroImage } from '../HeroImage'
 
 export interface Props {
   blok: StoryBlokComponent
@@ -22,6 +23,7 @@ const components: {
   grid: Grid,
   'full-width-content': FullWidthContent,
   headline: Headline,
+  'hero-image': HeroImage,
 }
 
 export default function DynamicBlokComponent({ blok }: Props): ReactElement {

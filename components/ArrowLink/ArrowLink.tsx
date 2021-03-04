@@ -12,7 +12,7 @@ const ArrowLink: React.FC<LinkProps & ComponentProps<'a'>> = ({
   return (
     <Link href={href}>
       <a {...props} className={`${props.className} ${styles['link-label']}`}>
-        <p className="relative">{children}</p>{' '}
+        <p className="relative font-normal">{children}</p>{' '}
         <FontAwesomeIcon icon={faChevronRight} />
       </a>
     </Link>

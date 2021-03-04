@@ -41,30 +41,23 @@ export default function Home({ story, posts }: Props): React.ReactElement {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const res = await Storyblok.get(
-    `${process.env.STORYBLOK_ENDPOINT_ROOT}/stories/home`,
-    {
-      version: 'draft',
-      cv: Date.now(),
-    }
-  )
-  const postsRes = await Storyblok.get(
-    `${process.env.STORYBLOK_ENDPOINT_ROOT}/stories`,
-    {
-      version: 'draft',
-      sort_by: 'created_at:desc',
-      starts_with: 'posts',
-      per_page: 6,
-      cv: Date.now(),
-    }
-  )
-  const story: PageStory = res.data.story
-  const posts: PostStory[] = postsRes.data.stories
+  const res = await Storyblok.getStory('home', {
+    version: 'draft',
+    cv: Date.now(),
+  })
+
+  const postsRes = await Storyblok.getStories({
+    version: 'draft',
+    sort_by: 'created_at:desc',
+    starts_with: 'posts',
+    per_page: 6,
+    cv: Date.now(),
+  })
 
   return {
     props: {
-      story,
-      posts,
+      story: res.data.story as PageStory,
+      posts: postsRes.data.stories as PostStory[],
     },
   }
 }

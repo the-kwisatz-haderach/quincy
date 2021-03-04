@@ -172,7 +172,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        'Roboto',
+        'OpenSans',
         'ui-sans-serif',
         'system-ui',
         '-apple-system',
@@ -188,8 +188,7 @@ module.exports = {
         '"Noto Color Emoji"',
       ],
       serif: [
-        'Lobster',
-        'Merriweather',
+        'ArchitectsDaughter',
         'ui-serif',
         'Georgia',
         'Cambria',

@@ -6,7 +6,7 @@ import {
 } from './blokTypes'
 import { Post } from './types'
 
-export type StoryType = 'page' | 'post'
+export type StoryType = string | 'page' | 'post'
 
 export type Story<Fields extends Record<string, unknown> = {}> = StoryData<
   StoryContent<StoryBlokComponentType, Fields>

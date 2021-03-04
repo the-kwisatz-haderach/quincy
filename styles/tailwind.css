@@ -20,8 +20,12 @@
     @apply text-2xl;
   }
 
+  p {
+    @apply font-light;
+  }
+
   a {
-    @apply hover:text-green-300 transition-colors;
+    @apply hover:text-green-300 transition-colors font-normal;
   }
 
   .contained {

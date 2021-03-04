@@ -1,0 +1,20 @@
+.hero-image {
+  @apply w-full relative overflow-hidden text-white;
+  background-blend-mode: soft-light !important;
+  background-size: contain !important;
+  background-attachment: fixed !important;
+}
+
+.hero-image p,
+.hero-image h1 {
+  text-shadow: 0px 0 1px black;
+}
+
+@keyframes shift {
+  from {
+    transform: translate(-100%, -100%);
+  }
+  to {
+    transform: translate(0%, 0%);
+  }
+}
