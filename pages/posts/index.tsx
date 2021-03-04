@@ -4,10 +4,10 @@ import { Card } from '../../components/Card'
 import { Grid } from '../../components/Grid'
 import { Layout } from '../../components/Layout'
 import Storyblok from '../../lib/storyblok'
-import { Post, Story } from '../../lib/types'
+import { PostStory } from '../../lib/storyTypes'
 
 interface Props {
-  posts: Story<Post>[]
+  posts: PostStory[]
 }
 
 export default function PostsIndex({ posts }: Props): ReactElement {
@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return {
     props: {
-      posts: data.stories as Story<Post>[],
+      posts: data.stories as PostStory[],
     },
   }
 }

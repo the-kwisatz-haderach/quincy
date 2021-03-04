@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { FullWidthContentBlok } from '../../lib/types'
+import { FullWidthContentBlok } from '../../lib/blokTypes'
 import { RichText } from '../RichText'
 
 export default function FullWidthContent({

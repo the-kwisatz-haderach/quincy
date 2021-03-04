@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
-import { Color, Headline as HeadlineType } from '../../lib/types'
+import { HeadlineBlok } from '../../lib/blokTypes'
+import { Color } from '../../lib/types'
 
 const colorMap: Record<Color, string> = {
   'primary-dark': 'bg-green-800 text-white',
@@ -12,7 +13,7 @@ export default function Headline({
   title,
   description,
   color,
-}: HeadlineType): ReactElement {
+}: HeadlineBlok): ReactElement {
   return (
     <div
       className={`w-full flex flex-col p-10 justify-center items-center ${colorMap[color]}`}

@@ -3,13 +3,13 @@ import { Layout } from '../components/Layout'
 import { Page } from '../components/Page'
 import useStoryblok from '../hooks/useStoryblok'
 import Storyblok from '../lib/storyblok'
-import { HomeStory, PostStory } from '../lib/types'
 import { Card } from '../components/Card'
 import { Grid } from '../components/Grid'
 import { ArrowLink } from '../components/ArrowLink'
+import { PageStory, PostStory } from '../lib/storyTypes'
 
 type Props = {
-  story: HomeStory
+  story: PageStory
   posts: PostStory[]
 }
 
@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       cv: Date.now(),
     }
   )
-  const story: HomeStory = res.data.story
+  const story: PageStory = res.data.story
   const posts: PostStory[] = postsRes.data.stories
 
   return {
