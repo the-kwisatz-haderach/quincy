@@ -70,7 +70,7 @@ export default function PostsIndex({ posts }: Props): ReactElement {
               key={post.id}
               title={post.content.title}
               description={post.content.intro}
-              url={post.default_full_slug}
+              url={post.default_full_slug ?? post.full_slug}
               imageUrl={`http:${post.content.image}`}
               tags={post.tag_list}
             />
