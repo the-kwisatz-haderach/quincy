@@ -1,8 +1,6 @@
 .hero-image {
-  @apply w-full relative overflow-hidden text-white;
+  @apply w-full relative overflow-hidden text-white bg-cover bg-center bg-fixed !important;
   background-blend-mode: soft-light !important;
-  background-size: contain !important;
-  background-attachment: fixed !important;
 }
 
 .hero-image p,

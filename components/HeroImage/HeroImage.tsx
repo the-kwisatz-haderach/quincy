@@ -18,9 +18,9 @@ export default function HeroImage({
       }}
     >
       <div className="absolute p-10 top-0 left-0 flex flex-col items-start justify-end h-full w-full">
-        <h1 className="relative right-2 my-5">{title}</h1>
-        <p className="text-2xl intro my-0">{subtitle}</p>
-        <p className="text-lg my-3">{description}</p>
+        <h1 className="contained relative right-2 my-5">{title}</h1>
+        <p className="contained text-2xl intro my-0">{subtitle}</p>
+        <p className="contained text-lg my-3">{description}</p>
       </div>
     </div>
   )
