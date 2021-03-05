@@ -10,7 +10,7 @@ export type StoryType = string | 'page' | 'post' | 'global'
 
 export type Story<Fields extends Record<string, unknown> = {}> = StoryData<
   StoryContent<StoryBlokComponentType, Fields>
->
+> & { default_full_slug: string }
 
 export type PageStory = Story<{ body?: StoryBlokComponent[] }>
 export type PostStory = Story<Post>
