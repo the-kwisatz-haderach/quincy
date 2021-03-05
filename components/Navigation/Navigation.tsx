@@ -1,36 +1,42 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { MenuItem } from '../../lib/types'
 import styles from './Navigation.module.css'
-
-type MenuItem = {
-  title: string
-  link: string
-}
 
 export type Props = {
   menu: MenuItem[]
+  logoUrl: string
 }
 
 const linkStyles = 'hover:text-green-500 transition-colors'
 
-const Navigation: React.FC<Props> = ({ menu = [] }) => {
+const Navigation: React.FC<Props> = ({ menu = [], logoUrl }) => {
   const [home, ...menuLinks] = menu
   const router = useRouter()
 
   const isSelected = (path: string) =>
+    path === router.asPath ||
     router.asPath.split('/')[1] === path.replace('/', '')
 
   return (
-    <header className="sticky top-0 z-50 bg-white px-10 py-5 flex flex-row justify-between shadow-md">
-      <div>
-        <Link href={home.link}>LOGO</Link>
-      </div>
+    <header className="sticky top-0 z-50 h-16 bg-white px-10 flex flex-row justify-between items-center shadow-md">
+      <Link href={home.url}>
+        <div className="relative h-3/4 w-1/6 cursor-pointer">
+          <Image
+            src={`http:${logoUrl}`}
+            layout="fill"
+            objectFit="contain"
+            objectPosition="left"
+          />
+        </div>
+      </Link>
       <nav className="flex flex-row space-x-10 capitalize">
         {menuLinks.map((item) => (
-          <Link href={item.link} key={item.title}>
+          <Link href={item.url} key={item.title}>
             <a
               className={
-                isSelected(item.link)
+                isSelected(item.url)
                   ? `${styles.selected} text-green-500 ${linkStyles}`
                   : linkStyles
               }

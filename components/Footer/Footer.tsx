@@ -1,11 +1,6 @@
-import { faCopyright, IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import { faCopyright } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-type SocialChannelLink = {
-  title: string
-  link: string
-  icon: IconDefinition
-}
+import { SocialChannelLink } from '../../lib/types'
 
 export type Props = {
   socialChannels: SocialChannelLink[]
@@ -21,8 +16,10 @@ const Footer: React.FC<Props> = ({ socialChannels }) => {
         {socialChannels.map((channel) => (
           <a
             key={channel.title}
+            target="_blank"
+            rel="noreferrer noopener"
             className="hover:text-green-300"
-            href={channel.link}
+            href={channel.url}
             title={channel.title}
           >
             <FontAwesomeIcon className="animate-enlarge" icon={channel.icon} />

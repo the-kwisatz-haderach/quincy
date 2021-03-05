@@ -1,3 +1,4 @@
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons'
 import { Richtext } from 'storyblok-js-client'
 import { StoryBlokComponent } from './blokTypes'
 
@@ -49,4 +50,22 @@ export type Grid = {
   columns: StoryBlokComponent[]
   col_count: number
   grid_gap: number
+}
+
+export type SocialChannelLink = {
+  title: string
+  url: string
+  icon: IconDefinition
+}
+
+export type MenuItem = {
+  title: string
+  url: string
+}
+
+export type GlobalSettings = {
+  logo: string
+  facebook: string
+  instagram: string
+  twitter: string
 }

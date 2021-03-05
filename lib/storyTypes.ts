@@ -4,9 +4,9 @@ import {
   StoryBlokComponentType,
   StoryContent,
 } from './blokTypes'
-import { Post } from './types'
+import { GlobalSettings, Post } from './types'
 
-export type StoryType = string | 'page' | 'post'
+export type StoryType = string | 'page' | 'post' | 'global'
 
 export type Story<Fields extends Record<string, unknown> = {}> = StoryData<
   StoryContent<StoryBlokComponentType, Fields>
@@ -14,5 +14,6 @@ export type Story<Fields extends Record<string, unknown> = {}> = StoryData<
 
 export type PageStory = Story<{ body?: StoryBlokComponent[] }>
 export type PostStory = Story<Post>
+export type GlobalStory = Story<GlobalSettings>
 
-export type Stories = PageStory | PostStory
+export type Stories = PageStory | PostStory | GlobalStory
