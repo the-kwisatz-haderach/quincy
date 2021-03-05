@@ -41,21 +41,22 @@ export default function PostComponent({ story }: Props): ReactElement {
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data }: StoryblokResult = await Storyblok.get('cdn/links/', {
     version: 'draft',
+    starts_with: 'posts',
   })
 
   const paths = Object.values<StoryBlokLink>(data.links).flatMap((link) => {
     if (link.is_folder) return []
-    if (
-      link.slug === 'home' ||
-      link.slug === 'about' ||
-      link.slug === 'contact' ||
-      link.real_path === '/'
-    )
-      return []
-    return link.alternates.map((altLink) => ({
-      params: { slug: altLink.path.split('/').slice(-1)[0] },
-      locale: altLink.lang,
-    }))
+    if (link.slug === 'home' || link.real_path === '/') return []
+    return [
+      {
+        params: { slug: link.slug.split('/').slice(-1)[0] },
+        locale: 'en',
+      },
+      ...link.alternates.map((altLink) => ({
+        params: { slug: altLink.path.split('/').slice(-1)[0] },
+        locale: altLink.lang,
+      })),
+    ]
   })
 
   return {
@@ -68,14 +69,14 @@ export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
   params,
   locale,
 }) => {
+  const loc = locale === 'en' ? '' : `${locale}/`
   const { data } = await Storyblok.getStory(
-    `${locale}/posts/${params?.slug}` || '',
+    `${loc}posts/${params?.slug}` || '',
     {
       version: 'draft',
       cv: Date.now(),
     }
   )
-
   return {
     props: {
       story: data.story as PostStory,

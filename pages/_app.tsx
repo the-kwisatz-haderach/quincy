@@ -1,24 +1,32 @@
 import { ComponentType } from 'react'
-import { MenuItem, SocialChannelLink } from '../lib/types'
-import '../styles/globals.css'
-import '../styles/fonts.css'
-import '../styles/tailwind.css'
+import { SocialChannelLink, StoryBlokLink } from '../lib/types'
 import {
   faFacebookSquare,
   faInstagramSquare,
   faTwitterSquare,
 } from '@fortawesome/free-brands-svg-icons'
-import { IAppContext } from '../context/AppContext/types'
+import { IAppContext, Locale } from '../context/AppContext/types'
 import AppContext from '../context/AppContext'
 import Storyblok from '../lib/storyblok'
 import { GlobalStory } from '../lib/storyTypes'
+import '../styles/globals.css'
+import '../styles/fonts.css'
+import '../styles/tailwind.css'
 
-const menu: MenuItem[] = [
-  { title: 'home', url: '/' },
-  { title: 'posts', url: '/posts' },
-  { title: 'about', url: '/about' },
-  { title: 'contact', url: '/contact' },
-]
+const menu: IAppContext['menu'] = {
+  en: [
+    { title: 'home', url: '/' },
+    { title: 'posts', url: '/posts' },
+    { title: 'about', url: '/about' },
+    { title: 'contact', url: '/contact' },
+  ],
+  sv: [
+    { title: 'hem', url: '/' },
+    { title: 'inlägg', url: '/posts' },
+    { title: 'om oss', url: '/about' },
+    { title: 'kontakt', url: '/contact' },
+  ],
+}
 
 const socialChannels = [
   {
@@ -52,29 +60,67 @@ function MyApp({ Component, pageProps, appContext }: Props) {
   )
 }
 
-MyApp.getInitialProps = async (): Promise<{ appContext: IAppContext }> => {
+const makeAppLinks = (defaultLocale: Locale) => (
+  links: StoryBlokLink[]
+): IAppContext['menu'] => {
+  return links.reduce<IAppContext['menu']>(
+    (acc, curr) => {
+      curr.alternates.forEach((alternate) => {
+        acc[alternate.lang as Locale].push({
+          title: alternate.name ?? curr.name,
+          url: curr.real_path,
+        })
+      })
+      acc[defaultLocale].push({
+        title: curr.name,
+        url: curr.real_path,
+      })
+      return acc
+    },
+    { sv: [], en: [] }
+  )
+}
+
+MyApp.getInitialProps = async (
+  context: Record<string, any>
+): Promise<{ appContext: IAppContext }> => {
   const { data } = await Storyblok.getStory('global', {
     version: 'draft',
   })
-  // const { data } = await Storyblok.getStory('links', {
-  //   version: 'draft',
-  // })
+  const response = await Storyblok.get('cdn/links', {
+    version: 'draft',
+  })
+
+  const { links } = response.data
+
+  const myLinks = ((Object.values(links) as unknown) as StoryBlokLink[])
+    .flatMap((link) => {
+      if (link.slug !== 'global' && link.parent_id === 0) {
+        return link
+      }
+      return []
+    })
+    .sort((a, b) => b.position - a.position)
 
   const { content } = data.story as GlobalStory
 
-  const socialChannelLinks: SocialChannelLink[] = socialChannels.map(
-    (channel) => ({
-      title: channel.title,
-      url: content[channel.key] ?? '#',
-      icon: channel.icon,
-    })
+  const socialChannelLinks: SocialChannelLink[] = socialChannels.flatMap(
+    (channel) => {
+      const channelContent = content[channel.key]
+      if (!channelContent) return []
+      return {
+        title: channel.title,
+        url: content[channel.key],
+        icon: channel.icon,
+      }
+    }
   )
-  console.log(content.logo)
   return {
     appContext: {
-      menu,
+      menu: makeAppLinks('en')(myLinks),
       socialChannels: socialChannelLinks,
       logoUrl: content.logo,
+      locale: context.router.locale,
     },
   }
 }

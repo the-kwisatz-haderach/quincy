@@ -2,8 +2,13 @@ import { createContext, useContext } from 'react'
 import { IAppContext } from './types'
 
 export const AppContext = createContext<IAppContext>({
-  menu: [],
+  menu: {
+    sv: [],
+    en: [],
+  },
   socialChannels: [],
+  logoUrl: '',
+  locale: 'en',
 })
 
 export const useAppContext = () => useContext(AppContext)

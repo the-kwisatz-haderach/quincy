@@ -28,6 +28,21 @@
     @apply hover:text-green-300 transition-colors font-normal;
   }
 
+  body::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  body::-webkit-scrollbar-track {
+    @apply bg-green-900;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    @apply bg-green-600 border-green-500;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 20px;
+  }
+
   .contained {
     @apply container max-w-screen-xl mx-auto px-5 my-20;
   }

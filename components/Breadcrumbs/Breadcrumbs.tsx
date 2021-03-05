@@ -14,20 +14,22 @@ export default function Breadcrumbs(): ReactElement | null {
   const crumbs = router.asPath.split('/').slice(1)
 
   return (
-    <div className="w-full p-5 space-x-2 flex bg-green-600 text-white">
-      <Link href="/">
-        <a className="hover:text-green-300 transition-colors">Home</a>
-      </Link>
-      {crumbs.map((slug) => (
-        <div key={slug} className={`flex space-x-2 ${styles.crumbs}`}>
-          <p className="pointer-events-none">/</p>
-          <Link href={'/' + slug}>
-            <a className="hover:text-green-300 transition-colors">
-              {(slug[0].toUpperCase() + slug.slice(1)).replace('-', ' ')}
-            </a>
-          </Link>
-        </div>
-      ))}
+    <div className="w-full py-5 bg-green-600 text-white">
+      <div className="mx-auto px-5 space-x-2 max-w-screen-xl flex">
+        <Link href="/">
+          <a className="hover:text-green-300 transition-colors">Home</a>
+        </Link>
+        {crumbs.map((slug) => (
+          <div key={slug} className={`flex space-x-2 ${styles.crumbs}`}>
+            <p className="pointer-events-none">/</p>
+            <Link href={'/' + slug}>
+              <a className="hover:text-green-300 transition-colors">
+                {(slug[0].toUpperCase() + slug.slice(1)).replace('-', ' ')}
+              </a>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
