@@ -1,3 +1,16 @@
 .selected {
   font-weight: bold;
 }
+
+.show {
+  transform: translateY(-100vh);
+}
+
+.link-container {
+  @apply divide-y bg-white space-y-2 px-5 fixed inset-0 top-16 w-screen flex flex-col items-center transition-transform ease-in-out duration-500;
+  z-index: -1;
+}
+
+.links {
+  @apply divide-y bg-white space-y-2 px-5 fixed inset-0 top-16 w-screen flex flex-col items-center transition-transform ease-in-out duration-500;
+}
