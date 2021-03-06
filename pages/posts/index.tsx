@@ -44,8 +44,8 @@ export default function PostsIndex({ posts }: Props): ReactElement {
         description: '',
       }}
     >
-      <div className="w-full p-5 bg-green-400 ">
-        <div className="contained space-x-5 my-0 flex flex-row items-center">
+      <div className="w-full p-5 bg-green-400">
+        <div className="contained space-y-5 md:space-y-0 md:space-x-5 my-0 md:items-center flex flex-col md:flex-row">
           <div className="flex-grow">
             <p className="font-normal mb-2">Sök</p>
             <SearchBar onTypeQuery={handleSearchQuery} />

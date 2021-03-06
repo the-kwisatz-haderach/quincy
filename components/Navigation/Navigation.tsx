@@ -22,7 +22,7 @@ const Navigation: React.FC<Props> = ({ menu = [], logoUrl, locale }) => {
     router.asPath.split('/')[1] === path.replace('/', '')
 
   return (
-    <header className="sticky top-0 z-50 h-16 bg-white px-10 flex flex-row justify-between items-center shadow-md">
+    <header className="overflow-hidden sticky top-0 z-50 h-16 bg-white px-10 flex flex-row justify-between items-center shadow-md">
       <div className="relative h-full mx-auto container max-w-screen-xl flex flex-row justify-between items-center">
         <Link href={home.url}>
           <div className="relative h-3/4 w-1/6 cursor-pointer">

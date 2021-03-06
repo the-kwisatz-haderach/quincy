@@ -16,7 +16,7 @@ export default function FilterMenu({
   return (
     <div>
       {title && <p className="font-normal mb-2">{title}</p>}
-      <div className="space-x-1">
+      <div className="space-x-1 space-y-1">
         {filters.map((filter) => (
           <FilterButton
             key={filter.key ?? filter.value}
