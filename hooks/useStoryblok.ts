@@ -5,6 +5,10 @@ import Storyblok from '../lib/storyblok'
 export default function useStoryblok<T extends StoryData>(originalStory: T): T {
   let [story, setStory] = useState(originalStory)
 
+  useEffect(() => {
+    setStory(originalStory)
+  }, [originalStory])
+
   // adds the events for updating the visual editor
   // see https://www.storyblok.com/docs/guide/essentials/visual-editor#initializing-the-storyblok-js-bridge
   function initEventListeners() {
